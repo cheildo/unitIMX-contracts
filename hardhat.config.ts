@@ -1,6 +1,7 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomicfoundation/hardhat-ignition-ethers";
+import "@nomicfoundation/hardhat-verify";
 
 import * as dotenv from 'dotenv';
 
@@ -38,11 +39,22 @@ const config: HardhatUserConfig = {
   },
 
   sourcify: {
-    enabled: true
+    enabled: false
   },
 
   etherscan: {
     apiKey: process.env.ETHERSCAN_API,
+    customChains: [
+      {
+        network: "immutableMainnet",
+        chainId: 13371,
+        urls: {
+          apiURL: "https://explorer.immutable.com/api",
+          browserURL: "https://explorer.immutable.com/",
+        }
+      },
+      // all other chains that should be supported by verification plugin
+    ]
   },
   
 };

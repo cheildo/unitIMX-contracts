@@ -25,7 +25,7 @@ contract UnitIMX is Ownable, Pausable, ImmutableERC1155 {
         "ScarQuestVoucherCollection", //name
         "https://velhalla-game.s3.amazonaws.com/Image/Item/UnitCardVoucherV2/{id}.json",  //baseURI
         "https://velhalla-game.s3.amazonaws.com/Image/Item/UnitCardVoucherV2/{id}.json", // Contract URI
-        0x6b969FD89dE634d8DE3271EbE97734FEFfcd58eE,     // Operator list
+        0x5F5EBa8133f68ea22D712b0926e2803E78D89221,  // Operator list  --testnet = 0x6b969FD89dE634d8DE3271EbE97734FEFfcd58eE
         0xB91e77f09a769C84740FF07335901790971b6c60, // Receiver
         2000 //fee numerator
     ) {
@@ -83,6 +83,12 @@ contract UnitIMX is Ownable, Pausable, ImmutableERC1155 {
 
     function setSymbol (string memory _newSymbol) public onlyOwner {
         symbol= _newSymbol;
+    }
+
+    function setMaxIds (uint256 _maxIdNormal, uint256 _maxIdSilver, uint256 _maxIdGold) public onlyOwner {
+        maxIdNormal = _maxIdNormal;
+        maxIdSilver = _maxIdSilver;
+        maxIdGold = _maxIdGold;
     }
 
     // function setURI(string memory _newUri) public onlyOwner {
